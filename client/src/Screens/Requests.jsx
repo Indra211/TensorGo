@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "../components/Header";
 import { useLocation, useNavigate } from "react-router-dom";
 import { urls } from "../Apis/urls";
@@ -18,6 +18,12 @@ export const Requests = () => {
     "Product Pricing Queries",
     "Product Feature Implementation Requests",
   ];
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, []);
 
   const handleSubmit = async () => {
     setLoading(true);
